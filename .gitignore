@@ -1,5 +1,28 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,c++
+# Created by https://www.toptal.com/developers/gitignore/api/git,visualstudio,visualstudiocode,linux,windows,cmake,c++
+# Edit at https://www.toptal.com/developers/gitignore?templates=git,visualstudio,visualstudiocode,linux,windows,cmake,c++
+### wxWidgets ###
+### wxWidgets, build Artifacts 
+*.dll
+*.so
+*.dylib
+*.lib
+*.exp
+*.pdb
+
+# wxWidgets build directory 
+build/
+
+# wxWidgets, in build's files
+*.workspace
+*.layout
+*.ncb
+*.suo
+*.user
+*.user.*
+*.swp
+*.plg
+*.opt
+*.psess
 
 ### C++ ###
 # Prerequisites
@@ -35,6 +58,53 @@
 *.out
 *.app
 
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -53,6 +123,32 @@
 # Ignore all local history of files
 .history
 .ionide
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -287,7 +383,6 @@ _pkginfo.txt
 # Others
 ClientBin/
 ~$*
-*~
 *.dbmdl
 *.dbproj.schemaview
 *.jfm
@@ -435,11 +530,6 @@ FodyWeavers.xsd
 # Local History for Visual Studio Code
 
 # Windows Installer files from build outputs
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
 
 # JetBrains Rider
 *.sln.iml
@@ -447,4 +537,4 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++
+# End of https://www.toptal.com/developers/gitignore/api/git,visualstudio,visualstudiocode,linux,windows,cmake,c++
