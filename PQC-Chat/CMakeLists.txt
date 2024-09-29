@@ -1,21 +1,19 @@
-﻿# CMakeList.txt: PQC-Chat에 대한 CMake 프로젝트, 여기에 소스를 포함하고
-# 프로젝트 특정 논리를 정의합니다.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required(VERSION 3.10)
+project(PQC-Chat)
 
-# 지원되는 경우 MSVC 컴파일러에 대해 핫 다시 로드 사용하도록 설정합니다.
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-endif()
+# C++ 표준 설정
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project ("PQC-Chat")
-
-# 이 프로젝트의 실행 파일에 소스를 추가합니다.
-add_executable (PQC-Chat "PQC-Chat.cpp" "PQC-Chat.h")
-
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET PQC-Chat PROPERTY CXX_STANDARD 20)
-endif()
-
-# TODO: 필요한 경우 테스트를 추가하고 대상을 설치합니다.
+# 여러 서브디렉토리 추가
+foreach(dir IN ITEMS 
+    App/wxChat # 메인 실행
+    App/tcpclient-test
+    App/tcpserver-test
+    App/tlsclient-test
+    App/tlsserver-test
+    App/vpnclient-test
+    App/vpnserver-test
+)
+    add_subdirectory(${dir})
+endforeach()
