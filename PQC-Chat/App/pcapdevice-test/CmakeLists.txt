@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.10)
+project(PcapDeviceTest)
+
+# C++17 설정
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 소스, 헤더 파일
+set(SOURCES
+    ../../Src/pcapdevice.cpp
+    pcapdevice-test.cpp
+
+)
+
+
+# 실행 파일 생성
+add_executable(PcapDeviceTest ${SOURCES} ${HEADERS})
+
+# 의존된 라이브러리 참조
+include_directories(${CMAKE_SOURCE_DIR}/../../Src)
+link_directories(${CMAKE_SOURCE_DIR}/../../Lib)
+# windows용 linux용 따로 라이브러리 확인해서 크로스컴파일 할수 있게 바꿔야함
+target_link_libraries(PcapDeviceTest PRIVATE lpcap)
+
+# 산출파일 저장위치 설정
+set_target_properties(PcapDeviceTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../Out)

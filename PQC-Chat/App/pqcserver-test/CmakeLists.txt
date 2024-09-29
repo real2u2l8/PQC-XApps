@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.10)
+project(PQCServerTest)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    ../../Src/pqcclient.cpp
+    ../../Src/pqcsession.cpp
+    ../../Src/tcpclient.cpp
+    ../../Src/tcpsession.cpp
+    ../../Src/tlsclient.cpp
+    ../../Src/tlssession.cpp
+    tlsclient-test.cpp
+)
+
+set(HEADERS
+    ../../Src/client.h
+    ../../Src/pqcclient.h
+    ../../Src/pqcsession.h
+    ../../Src/session.h
+    ../../Src/tcpclient.h
+    ../../Src/tcpsession.h
+    ../../Src/tlsclient.h
+    ../../Src/tlssession.h
+)
+
+# ���� ���� ����
+add_executable(PQCServerTest ${SOURCES} ${HEADERS})
+
+# ���̺귯�� �� ��� ��� ����
+include_directories(${CMAKE_SOURCE_DIR}/../../Src)
+link_directories(${CMAKE_SOURCE_DIR}/../../Lib)
+target_link_libraries(PQCServerTest PRIVATE ssl crypto oqs)
+
+# ��� ���丮 ���� (Out ������ ����)
+set_target_properties(PQCServerTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../Out)

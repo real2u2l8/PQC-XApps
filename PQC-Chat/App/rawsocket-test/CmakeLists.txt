@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+project(RawSocketTest)
+
+# C++17 설정
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 소스 파일 설정
+set(SOURCES
+    ../../Src/rawsocket.cpp
+    rawsocket-test.cpp
+)
+
+# 실행 파일 생성
+add_executable(RawSocketTest ${SOURCES})
+
+# include 경로 설정
+target_include_directories(RawSocketTest PRIVATE ../../Src)
+
+# 빌드 출력 경로 설정 (Out 폴더로 설정)
+set_target_properties(RawSocketTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../Out)

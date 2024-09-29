@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.10)
+project(wxChat)
+
+# C++17 설정
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    ../../Src/tcpclient.cpp
+    ../../Src/tcpsession.cpp
+    ../../Src/tlsclient.cpp
+    ../../Src/tlssession.cpp
+    main.cpp
+    pqcchat.cpp
+    rthread.cpp
+    thread.cpp
+)
+
+set(HEADERS
+    ../../Src/client.h
+    ../../Src/session.h
+    ../../Src/tcpclient.h
+    ../../Src/tcpsession.h
+    ../../Src/tlsclient.h
+    ../../Src/tlssession.h
+    pqcchat.h
+    rthread.h
+    thread.h
+)
+
+
+#
+add_executable(wxChat ${SOURCES} ${HEADERS})
+
+# 
+find_package(wxWidgets REQUIRED COMPONENTS core base)
+include(${wxWidgets_USE_FILE})
+target_link_libraries(wxChat ${wxWidgets_LIBRARIES})
+
+# 
+include_directories(${CMAKE_SOURCE_DIR}/../../Inc)
+link_directories(${CMAKE_SOURCE_DIR}/../../Lib)
+target_link_libraries(wxChat PRIVATE ssl crypto)
+
+#
+set_target_properties(wxChat PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../Out)
