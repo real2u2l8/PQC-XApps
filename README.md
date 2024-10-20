@@ -1,6 +1,3 @@
-# Create a README.md file for the PQC-XApps project
-
-readme_content = """
 # PQC-XApps
 
 **PQC-XApps**는 리눅스와 윈도우 환경에서 **크로스 컴파일**을 지원하는 **양자 내성 암호(TLS)** 기반 애플리케이션 모음 입니다.</br>
